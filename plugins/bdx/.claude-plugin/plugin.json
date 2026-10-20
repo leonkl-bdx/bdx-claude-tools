@@ -1,0 +1,6 @@
+{
+  "name": "bdx",
+  "description": "BDX-Team-Skills: Insight Deck Abfrage (read-only). Weitere BDX-Skills kommen hier dazu.",
+  "version": "1.0.0",
+  "author": { "name": "BDX Media" }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "bdx-tools",
+  "owner": { "name": "BDX Media" },
+  "metadata": {
+    "description": "Interne BDX-Team-Skills für Claude Code (read-only Datentools u.a.)."
+  },
+  "plugins": [
+    {
+      "name": "bdx",
+      "source": "./plugins/bdx",
+      "description": "BDX-Team-Skills — u.a. read-only Abfrage des Insight Deck (Social-Performance)"
+    }
+  ]
+}
