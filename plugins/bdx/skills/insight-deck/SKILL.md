@@ -54,8 +54,23 @@ CLI-Argumente:
 | `--kind` | **Pflicht.** Eine der acht Collections (siehe unten). |
 | `--customer` | Filter auf `customer` — nur `socialAccounts`, `adAccounts`. |
 | `--platform` | Filter auf `platform` — nur `socialAccounts`, `socialAssets`. |
+| `--accountId` | Filter auf `accountId` — `socialAccountDaily`, `socialAssets`, `socialAssetDaily`. |
+| `--assetId` | Filter auf `assetId` — `socialAssetDaily`, `ads`. |
+| `--adAccountId` | Filter auf `adAccountId` — `adAccountDaily`, `adDaily`, `ads`. |
+| `--adId` | Filter auf `adId` — `adDaily`. |
 | `--from` / `--to` | `date`-Range (YYYY-MM-DD) — nur die *Daily-Collections. |
 | `--limit` | Default 500, harte Obergrenze 5000. |
+
+**Gezielt einen Account abfragen (z. B. „nur TikTok von Kunde X"):** zwei Schritte —
+erst die `accountId` holen, dann die Tageswerte danach filtern. So schneidet auch
+das 5000-Limit nichts mehr ab (gefilterter Satz ist klein):
+
+```bash
+# 1) accountId des TikTok-Accounts von Kunde X finden
+node "$CLAUDE_PLUGIN_ROOT/skills/insight-deck/query.mjs" --kind socialAccounts --customer "Kunde X" --platform tiktok
+# 2) dessen Tageswerte (z. B. Follower-Verlauf) im Zeitraum
+node "$CLAUDE_PLUGIN_ROOT/skills/insight-deck/query.mjs" --kind socialAccountDaily --accountId tiktok_123456 --from 2026-09-01 --to 2026-09-30
+```
 
 Antwort: `{ kind, count, limit, docs: [...] }`. Ein nicht unterstützter Filter
 oder ein unbekanntes `kind` liefert HTTP 400 mit Klartext; ein fehlender/

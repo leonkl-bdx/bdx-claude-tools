@@ -9,7 +9,7 @@
 // Beispiel:
 //   node query.mjs --kind adDaily --from 2026-09-01 --to 2026-09-30 --limit 2000
 
-const FLAGS = ['kind', 'customer', 'platform', 'from', 'to', 'limit']
+const FLAGS = ['kind', 'customer', 'platform', 'accountId', 'assetId', 'adAccountId', 'adId', 'from', 'to', 'limit']
 
 function parseArgs(argv) {
   const out = {}
